@@ -20,6 +20,13 @@ resource "aws_instance" "ubuntu_vm" {
   subnet_id              = aws_subnet.private.id
   vpc_security_group_ids = [aws_security_group.private_sg.id]
 
+  # Configure the root storage drive to 60 GB
+  root_block_device {
+    volume_size           = 60
+    volume_type           = "gp3"
+    delete_on_termination = true
+  }
+
   # This explicitly prevents assigning a public/external IP address
   associate_public_ip_address = false
 
