@@ -1,0 +1,17 @@
+**1. Clone tfenv into your home directory**  
+git clone https://github.com/tfutils/tfenv.git ~/.tfenv  
+
+**2. Symlink the binaries into your local path**  
+mkdir -p ~/bin  
+ln -s ~/.tfenv/bin/* ~/bin/  
+
+**3. Install and activate your desired version of Terraform**  
+tfenv install latest  
+tfenv use 1.16.4  
+
+**4. Verify the installation**  
+terraform --version  
+
+**5. Move Plugin Cache to temporary storage**  
+export TF_PLUGIN_CACHE_DIR="/tmp/terraform-plugin-cache"  
+mkdir -p $TF_PLUGIN_CACHE_DIR  
