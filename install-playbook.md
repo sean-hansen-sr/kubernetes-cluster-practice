@@ -60,22 +60,22 @@ sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 # **Deploy a Pod Network Plugin - Control Plane Only**
-**Install the Calico Custom Resource Definitions**\
-kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.32.2/manifests/v1_crd_projectcalico_org.yaml \
+**Install the Calico Custom Resource Definitions**  
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.32.2/manifests/v1_crd_projectcalico_org.yaml  
 
-**Install the Tigera Operator**\
-kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.32.2/manifests/tigera-operator.yaml \
+**Install the Tigera Operator**  
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.32.2/manifests/tigera-operator.yaml  
 
-curl -O https://raw.githubusercontent.com/projectcalico/calico/v3.32.2/manifests/custom-resources.yaml \
-**Open the custom-resources.yaml file in a text editor and locate the ipPools section. Crucial: Change the cidr block value (192.168.0.0/16 by default) to match the Pod Network CIDR you specified when initializing your cluster (e.g., if you used kubeadm init --pod-network-cidr=10.244.0.0/16, update the CIDR here to 10.244.0.0/16).**\
+curl -O https://raw.githubusercontent.com/projectcalico/calico/v3.32.2/manifests/custom-resources.yaml  
+**Open the custom-resources.yaml file in a text editor and locate the ipPools section. Crucial: Change the cidr block value (192.168.0.0/16 by default) to match the Pod Network CIDR you specified when initializing your cluster (e.g., if you used kubeadm init --pod-network-cidr=10.244.0.0/16, update the CIDR here to 10.244.0.0/16).**  
 
-kubectl create -f custom-resources.yaml\
+kubectl create -f custom-resources.yaml  
 
-kubectl get pods -n calico-system -w\
-**Once all pods transition to a Running status, verify that your cluster nodes have recognized the CNI and switched to a healthy state**\
+kubectl get pods -n calico-system -w  
+**Once all pods transition to a Running status, verify that your cluster nodes have recognized the CNI and switched to a healthy state**  
 
-kubectl get nodes\
-**The output should now show Ready for all available nodes.**\
+kubectl get nodes  
+**The output should now show Ready for all available nodes.**  
 
 # **Join Worker Nodes - Worker Nodes Only**
 kubeadm join command saved earlier
