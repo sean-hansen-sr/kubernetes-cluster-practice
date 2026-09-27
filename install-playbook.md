@@ -1,5 +1,5 @@
 # **System Preparation - All Nodes**
-### Disable swap immediately and permanently
+## Disable swap immediately and permanently
 sudo swapoff -a
 sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
 
