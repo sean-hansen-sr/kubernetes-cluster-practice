@@ -62,5 +62,5 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 # **Deploy a Pod Network Plugin - Control Plane Only**
 Calico or Flannel
 
-# **Join Worker Nodes - Worker Nodes Only
+# **Join Worker Nodes - Worker Nodes Only**
 kubeadm join command saved earlier
