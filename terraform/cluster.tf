@@ -65,6 +65,6 @@ resource "aws_instance" "ubuntu_vm" {
 
   tags = {
     Name = "ubuntu-private-${count.index + 1}"
-    Role = count.index == 0 ? "Control_Plane" : "Worker_Node"
+    Role = count.index == 0 ? "Control_Plane_${count.index + 1}" : "Worker_Node_${count.index}"
   }
 }
